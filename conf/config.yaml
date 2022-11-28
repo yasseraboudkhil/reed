@@ -1,0 +1,9 @@
+aws:
+  region: ""
+  accessKey: ""
+  secretKey: ""
+kms:
+  keyId: ""
+server:
+  host: "localhost"
+  port: 18337

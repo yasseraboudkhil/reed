@@ -1,0 +1,54 @@
+syntax = "proto3";
+
+package model;
+
+message EncryptPayload {
+
+    string userId = 1;
+    string plaintext = 2;
+    string fieldName = 3;
+  
+  }
+  
+  message DecryptPayload {
+  
+    string userId = 1;
+    CipherAndKey cipherAndKey = 2;
+    string fieldName = 3;
+  
+  }
+  
+  message EncryptRequest {
+    string api = 1;
+  
+    EncryptPayload encryptPayload = 2;
+  }
+
+  message CipherAndKey {
+    
+    string ciphertext = 1;
+    string encryptedDataKey = 2;
+  }
+  
+  message EncryptResponse {
+    string api = 1;
+
+    CipherAndKey cipherAndKey = 2;
+  }
+  
+  message DecryptRequest {
+    string api = 1;
+  
+    DecryptPayload decryptPayload = 2;
+  }
+  
+  message DecryptResponse {
+    string api = 1;
+  
+    string decryptedCipher = 2;
+  }
+
+  service ReedService {
+    rpc Encrypt (EncryptRequest) returns (EncryptResponse);
+    rpc Decrypt (DecryptRequest) returns (DecryptResponse);
+  }
